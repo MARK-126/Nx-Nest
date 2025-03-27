@@ -11,6 +11,9 @@
         "jestConfig": "{projectRoot}/jest.config.ts"
       }
     },
+    "build": {
+      "dependsOn": ["generate-types"]
+    },
     "serve": {
       "executor": "@nx/js:node",
       "defaultConfiguration": "development",
@@ -26,6 +29,18 @@
         "production": {
           "buildTarget": "jobber-auth:build:production"
         }
+      }
+    },
+    "generate-types": {
+      "command": "prisma generate",
+      "options": {
+        "cwd": "apps/jobber-auth"
+      }
+    },
+    "migrate-prisma": {
+      "command": "prisma migrate dev",
+      "options": {
+        "cwd": "apps/jobber-auth"
       }
     }
   }
