@@ -1,11 +1,12 @@
-import nx from '@nx/eslint-plugin';
+import nx from '@nx/eslint-plugin'
+import eslintPluginPrettier from 'eslint-plugin-prettier/recommended'
 
 export default [
   ...nx.configs['flat/base'],
   ...nx.configs['flat/typescript'],
   ...nx.configs['flat/javascript'],
   {
-    ignores: ['**/dist'],
+    ignores: ['**/dist', '**/node_modules', '**/nx', '**/yarn.lock'],
   },
   {
     files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],
@@ -26,17 +27,15 @@ export default [
     },
   },
   {
-    files: [
-      '**/*.ts',
-      '**/*.tsx',
-      '**/*.cts',
-      '**/*.mts',
-      '**/*.js',
-      '**/*.jsx',
-      '**/*.cjs',
-      '**/*.mjs',
-    ],
+    files: ['**/*.ts', '**/*.tsx', '**/*.cts', '**/*.mts', '**/*.js', '**/*.jsx', '**/*.cjs', '**/*.mjs'],
     // Override or add rules here
-    rules: {},
+    rules: {
+      'no-console': 'error',
+      'no-unused-vars': 'error',
+      'no-trailing-spaces': 'warn',
+      'prefer-const': 'warn',
+      '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+    },
   },
-];
+  eslintPluginPrettier,
+]
