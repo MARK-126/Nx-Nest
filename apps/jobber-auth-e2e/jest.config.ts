@@ -15,4 +15,4 @@ export default {
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
   coverageDirectory: '../../coverage/jobber-auth-e2e',
-};
+}
