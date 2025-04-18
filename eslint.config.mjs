@@ -34,7 +34,16 @@ export default [
       'no-unused-vars': 'error',
       'no-trailing-spaces': 'warn',
       'prefer-const': 'warn',
-      '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        {
+          argsIgnorePattern: '^_',
+          varsIgnorePattern: '^_',
+          caughtErrorsIgnorePattern: '^_',
+          ignoreRestSiblings: true,
+          destructuredArrayIgnorePattern: '^_',
+        },
+      ],
     },
   },
   eslintPluginPrettier,
